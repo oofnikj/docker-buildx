@@ -1,5 +1,6 @@
 variables:
   CI_IMAGE: $DOCKER_HUB_USER/docker
+  CI_TAG: buildx
 
 before_script:
   - docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_TOKEN
@@ -12,5 +13,6 @@ build:
   script:
     - docker build -t $CI_IMAGE .
     - docker push $CI_IMAGE
+    - docker push $CI_IMAGE:$CI_TAG
   only:
     - master
