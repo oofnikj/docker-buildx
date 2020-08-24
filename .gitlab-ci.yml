@@ -11,7 +11,7 @@ build:
   services:
     - name: docker:dind
   script:
-    - docker build -t $CI_IMAGE .
+    - docker build -t $CI_IMAGE:$CI_TAG -t $CI_IMAGE .
     - docker push $CI_IMAGE
     - docker push $CI_IMAGE:$CI_TAG
   only:
